@@ -3,8 +3,8 @@
 
 
 ==Setting up to use Web.Ajax==
-  #Add a reference to Web.Ajax.dll in your web project.
-  #Add the following handler to your web.config
+  # Add a reference to Web.Ajax.dll in your web project.
+  # Add the following handler to your web.config
 
 <code language="xml">
 {{{
@@ -26,9 +26,10 @@
 </code>
 
 ==Creating a Server Side Method (in the .aspx.cs file)==
-# In the code behind for your .aspx page, change your page to inherit from Web.Ajax.Page
-# Add a static Method to your page class and annotate with the [Ajax] attribute
+  # In the code behind for your .aspx page, change your page to inherit from Web.Ajax.Page
+  # Add a static Method to your page class and annotate with the [Ajax] attribute
 <code language="c#">
+{{{
     using Web.Ajax;
 
     public partial class Default : Web.Ajax.Page
@@ -41,16 +42,20 @@
               return res;
         }
     }
+}}}
 </code>
 
 
 ==Calling the AJAX method from the client (in the .aspx file)==
-# Add a button with the onclick event="ClickMe();"
-{code:html}
+  # Add a button with the onclick event="ClickMe();"
+<code language="html">
+{{{
 <input type="button" onclick="ClickMe();" value="Call Ajax Method" />
-{code:html}
-# Add the following Javascript:
-{code:javascript}
+}}}
+</code>
+  # Add the following Javascript:
+<code language="javascript">
+{{{
 <script type="text/javascript">
     function onAjaxComplete(r)
     {
@@ -64,5 +69,6 @@
           Ajax.SampleMethod(5, 10, onAjaxComplete);
     }
 </script>
-{code:javascript}
+}}}
+</code>
  
