@@ -3,7 +3,7 @@
 
 
 ==Setting up to use Web.Ajax==
-  # Add a reference to Web.Ajax.dll in your web project.
+  # Add a reference to Web.Ajax.dll in your Asp.Net web project.
   # Add the following handler to your web.config
 
 <code language="xml">
