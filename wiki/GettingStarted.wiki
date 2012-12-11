@@ -1,12 +1,13 @@
-# Getting Started with Web.Ajax
+=Getting Started with Web.Ajax=
 
 
 
 ==Setting up to use Web.Ajax==
-#Add a reference to Web.Ajax.dll in your web project.
-#Add the following handler to your web.config
+  #Add a reference to Web.Ajax.dll in your web project.
+  #Add the following handler to your web.config
 
 <code language="xml">
+{{{
 <!--For Classic application pools-->
 <system.web>
     <httpHandlers>
@@ -21,6 +22,7 @@
         <add name="ResourceHandler" path="resource.axd" verb="*" type="Web.Ajax.Handlers.Resource,Web.Ajax" resourceType="Unspecified" preCondition="integratedMode" />
     </handlers>
 </system.webServer>
+}}}
 </code>
 
 ==Creating a Server Side Method (in the .aspx.cs file)==
