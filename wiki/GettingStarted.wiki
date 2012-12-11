@@ -1,10 +1,10 @@
-#Getting Started with Web.Ajax
+# Getting Started with Web.Ajax
 
 
 
 ==Setting up to use Web.Ajax==
-# Add a reference to Web.Ajax.dll in your web project.
-# Add the following handler to your web.config
+#Add a reference to Web.Ajax.dll in your web project.
+#Add the following handler to your web.config
 
 <code language="xml">
 <!--For Classic application pools-->
@@ -26,7 +26,7 @@
 ==Creating a Server Side Method (in the .aspx.cs file)==
 # In the code behind for your .aspx page, change your page to inherit from Web.Ajax.Page
 # Add a static Method to your page class and annotate with the [Ajax] attribute
-{code:c#}
+<code language="c#">
     using Web.Ajax;
 
     public partial class Default : Web.Ajax.Page
@@ -39,7 +39,7 @@
               return res;
         }
     }
-{code:c#}
+</code>
 
 
 ==Calling the AJAX method from the client (in the .aspx file)==
