@@ -1,0 +1,66 @@
+#Getting Started with Web.Ajax
+
+
+
+==Setting up to use Web.Ajax==
+# Add a reference to Web.Ajax.dll in your web project.
+# Add the following handler to your web.config
+
+<code language="xml">
+<!--For Classic application pools-->
+<system.web>
+    <httpHandlers>
+	<remove verb="*" path="resource.axd" />
+	<add verb="GET,HEAD" path="resource.axd" type="Web.Ajax.Handlers.Resource" validate="true" />
+    </httpHandlers>
+</system.web>
+
+<!--For Integrated application pools-->
+<system.webServer>
+    <handlers>
+        <add name="ResourceHandler" path="resource.axd" verb="*" type="Web.Ajax.Handlers.Resource,Web.Ajax" resourceType="Unspecified" preCondition="integratedMode" />
+    </handlers>
+</system.webServer>
+</code>
+
+==Creating a Server Side Method (in the .aspx.cs file)==
+# In the code behind for your .aspx page, change your page to inherit from Web.Ajax.Page
+# Add a static Method to your page class and annotate with the [Ajax] attribute
+{code:c#}
+    using Web.Ajax;
+
+    public partial class Default : Web.Ajax.Page
+    {
+        [Ajax(Name="Ajax.SampleMethod")]    //The Name identifies the method on the client side
+        public static SimpleResponse SampleMethod(int a, int b)
+        {
+              var res=new SimpleResponse();
+              res.Data=a*b;
+              return res;
+        }
+    }
+{code:c#}
+
+
+==Calling the AJAX method from the client (in the .aspx file)==
+# Add a button with the onclick event="ClickMe();"
+{code:html}
+<input type="button" onclick="ClickMe();" value="Call Ajax Method" />
+{code:html}
+# Add the following Javascript:
+{code:javascript}
+<script type="text/javascript">
+    function onAjaxComplete(r)
+    {
+         alert('Message for the server: ' + r.Data);
+    }
+
+    function ClickMe()
+    {
+          //An extra parameter is available on the client providing a javascript method
+          //to call once the ajax request has completed.
+          Ajax.SampleMethod(5, 10, onAjaxComplete);
+    }
+</script>
+{code:javascript}
+ 
